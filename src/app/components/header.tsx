@@ -8,7 +8,7 @@ import { ChevronDown } from 'lucide-react';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openSection, setOpenSection] = useState(null);
+  const [openSection, setOpenSection] = useState<null | string>(null);
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
