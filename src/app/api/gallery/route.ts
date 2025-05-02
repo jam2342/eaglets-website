@@ -1,5 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 
+type GoogleDriveAPIFile = {
+  id: string;
+  name: string;
+  mimeType: string;
+  createdTime: string;
+};
+
 type DriveFile = {
   id: string;
   name: string;
@@ -9,11 +16,15 @@ type DriveFile = {
   url: string;
 };
 
-function delay(ms: number) {
+function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function fetchAllFilesFromFolder(folderId: string, apiKey: string, album: string): Promise<DriveFile[]> {
+async function fetchAllFilesFromFolder(
+  folderId: string,
+  apiKey: string,
+  album: string
+): Promise<DriveFile[]> {
   const allFiles: DriveFile[] = [];
   let nextPageToken = '';
   const baseUrl = `https://www.googleapis.com/drive/v3/files`;
@@ -29,38 +40,40 @@ async function fetchAllFilesFromFolder(folderId: string, apiKey: string, album: 
 
     const url = `${baseUrl}?${queryParams.toString()}`;
     const res = await fetch(url);
-    const data = await res.json();
+
+    const data: {
+      nextPageToken?: string;
+      files?: GoogleDriveAPIFile[];
+    } = await res.json();
 
     if (!res.ok) {
       console.error(`Failed to fetch from folder ${folderId}:`, data);
       break;
     }
 
-    const images: DriveFile[] = (data.files || [])
-      .filter((f: any) => !f.mimeType.startsWith('video/'))
-      .map((f: any) => ({
-        id: f.id,
-        name: f.name,
-        album,
-        mimeType: f.mimeType,
-        createdTime: f.createdTime,
-        url: `https://www.googleapis.com/drive/v3/files/${f.id}?alt=media&key=${apiKey}`,
-      }));
+    const images: DriveFile[] = (data.files || []).map((f) => ({
+      id: f.id,
+      name: f.name,
+      album,
+      mimeType: f.mimeType,
+      createdTime: f.createdTime,
+      url: `https://www.googleapis.com/drive/v3/files/${f.id}?alt=media&key=${apiKey}`,
+    }));
 
     allFiles.push(...images);
     nextPageToken = data.nextPageToken || '';
-    await delay(300); // Delay to prevent rate limiting
+    await delay(300);
   } while (nextPageToken);
 
   return allFiles;
 }
 
-// Cache setup
+// In-memory cache
 let cachedData: DriveFile[] | null = null;
 let lastFetched = 0;
 const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes
 
-export async function GET(_req: Request) {
+export async function GET(): Promise<Response> {
   const now = Date.now();
   const apiKey = 'AIzaSyCFUArZsQJfE3FUtpV201Zx73qCQWYJEWA';
 
@@ -69,7 +82,6 @@ export async function GET(_req: Request) {
     { id: '1XYzVlSasigMbppuHpsxXbtDP3AiPDvGb', album: 'Events' }
   ];
 
-  // Return cached data if fresh
   if (cachedData && now - lastFetched < CACHE_DURATION) {
     return new Response(JSON.stringify(cachedData), {
       headers: { 'Content-Type': 'application/json' }
@@ -82,18 +94,17 @@ export async function GET(_req: Request) {
     for (const { id, album } of folders) {
       const files = await fetchAllFilesFromFolder(id, apiKey, album);
       all.push(...files);
-      await delay(500); // Delay between folders
+      await delay(500);
     }
 
-    // Save to cache
     cachedData = all;
     lastFetched = now;
 
     return new Response(JSON.stringify(all), {
       headers: { 'Content-Type': 'application/json' }
     });
-  } catch (e) {
-    console.error('Gallery API Error:', e);
+  } catch (error: unknown) {
+    console.error('Gallery API Error:', error);
     return new Response(JSON.stringify({ error: 'Could not fetch images' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
