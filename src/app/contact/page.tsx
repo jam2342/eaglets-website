@@ -1,7 +1,6 @@
 'use client';
 /* eslint-disable react/no-unescaped-entities */
 import { Mail, Instagram, Globe } from 'lucide-react';
-import Image from 'next/image';
 import ParticlesBackground from '../components/Particles';
 
 export default function Contact() {
