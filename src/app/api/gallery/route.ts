@@ -1,11 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
 
+type DriveFile = {
+  id: string;
+  name: string;
+  album: string;
+  mimeType: string;
+  createdTime: string;
+  url: string;
+};
+
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function fetchAllFilesFromFolder(folderId: string, apiKey: string, album: string) {
-  const allFiles = [];
+async function fetchAllFilesFromFolder(folderId: string, apiKey: string, album: string): Promise<DriveFile[]> {
+  const allFiles: DriveFile[] = [];
   let nextPageToken = '';
   const baseUrl = `https://www.googleapis.com/drive/v3/files`;
 
@@ -27,9 +36,9 @@ async function fetchAllFilesFromFolder(folderId: string, apiKey: string, album: 
       break;
     }
 
-    const images = (data.files || [])
-      .filter((f) => !f.mimeType.startsWith('video/')) // Exclude video files
-      .map((f) => ({
+    const images: DriveFile[] = (data.files || [])
+      .filter((f: any) => !f.mimeType.startsWith('video/'))
+      .map((f: any) => ({
         id: f.id,
         name: f.name,
         album,
@@ -47,11 +56,11 @@ async function fetchAllFilesFromFolder(folderId: string, apiKey: string, album: 
 }
 
 // Cache setup
-let cachedData: any[] | null = null;
+let cachedData: DriveFile[] | null = null;
 let lastFetched = 0;
 const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes
 
-export async function GET(req: Request) {
+export async function GET(_req: Request) {
   const now = Date.now();
   const apiKey = 'AIzaSyCFUArZsQJfE3FUtpV201Zx73qCQWYJEWA';
 
@@ -68,7 +77,7 @@ export async function GET(req: Request) {
   }
 
   try {
-    const all = [];
+    const all: DriveFile[] = [];
 
     for (const { id, album } of folders) {
       const files = await fetchAllFilesFromFolder(id, apiKey, album);
