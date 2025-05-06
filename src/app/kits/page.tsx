@@ -14,7 +14,7 @@ export default function Kits() {
   return (
     <main className="w-full overflow-hidden text-black bg-white">
 
-      {/* Hero */}
+      {/* base */}
       <section className="w-full h-[60vh] bg-cover bg-center relative" style={{ backgroundImage: "url('/kits/kits-banner.jpg')" }}>
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <h1 className="text-5xl sm:text-7xl font-extrabold text-white drop-shadow-lg">ABOUT THE KITS</h1>
