@@ -122,18 +122,30 @@ export default function Home() {
           <motion.div {...fadeInUp} className="bg-white/80 backdrop-blur-md rounded-3xl p-10 text-center shadow-xl mx-4">
             <h2 className="text-3xl sm:text-4xl font-bold text-orange-500 mb-6">Upcoming Events</h2>
             <div className="w-24 h-1 bg-orange-500 mx-auto mb-10 rounded-full" />
-            <ul className="space-y-6 text-left max-w-2xl mx-auto">
-              <li className="flex items-start gap-3">
+            <ul className="space-y-6 text-center max-w-2xl mx-auto">
+              <li className="flex items-center justify-center gap-3">
                 <span className="text-2xl">📌</span>
-                <p className="text-lg text-gray-800"><strong>May 10</strong> — Loream Ipsum</p>
+                <p className="text-lg text-gray-800"><strong>May 27th-29th</strong> -Carrolton</p>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-center justify-center gap-3">
                 <span className="text-2xl">📌</span>
-                <p className="text-lg text-gray-800"><strong>June 1</strong> — Loream Ipsum</p>
+                <p className="text-lg text-gray-800"><strong>June 2nd-5th</strong> -Chillicothe</p>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-center justify-center gap-3">
                 <span className="text-2xl">📌</span>
-                <p className="text-lg text-gray-800"><strong>July 15</strong> — Loream Ipsum</p>
+                <p className="text-lg text-gray-800"><strong>June 16th-20th</strong> -Lancaster</p>
+              </li>
+              <li className="flex items-center justify-center gap-3">
+                <span className="text-2xl">📌</span>
+                <p className="text-lg text-gray-800"><strong>June 23rd-26th</strong> -Desoto</p>
+              </li>
+              <li className="flex items-center justify-center gap-3">
+                <span className="text-2xl">📌</span>
+                <p className="text-lg text-gray-800"><strong>June 23rd-26th</strong> -Harlandale</p>
+              </li>
+              <li className="flex items-center justify-center gap-3">
+                <span className="text-2xl">📌</span>
+                <p className="text-lg text-gray-800"><strong>July 7th-10th</strong> -El Paso</p>
               </li>
             </ul>
           </motion.div>

@@ -69,7 +69,7 @@ export default function Footer() {
           width={30}
           height={30}
         />
-        <p>© 2025 Team 5417 EAGLETS, Jamal Mammadzada. All rights reserved.</p>
+        <p>©2025 Eaglets Robot Kits for Kids. All rights reserved.</p>
       </div>
     </footer>
   );

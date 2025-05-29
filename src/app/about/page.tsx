@@ -29,7 +29,7 @@ export default function About() {
               <strong>Eaglets: Robot Kits for Kids</strong> is a student-run organization that encourages children to explore engineering and technology through robot kits. Our organization was established by students from Allen High School’s FIRST Robotics Competition (FRC) team. These members designed custom 3D-printed robot kits and developed a curriculum aimed at teaching students the fundamentals of building and programming robots.
             </p>
             <p className="text-lg text-gray-800 leading-relaxed mt-6">
-              Throughout the year, we host various events in order to provide students from all backgrounds with the opportunity to develop hands-on experience with robotics. These events include annual summer camps, robotics nights at local elementary schools, and community workshops.
+              Throughout the year, we host a variety of events aimed at providing students from all backgrounds—especially those who are financially challenged—with hands-on experience in robotics. Our programs primarily serve students in grades 3–7 and include annual summer camps, robotics nights at local elementary schools, and community workshops designed to spark interest in STEM and build foundational skills in a fun, accessible environment.
             </p>
           </motion.div>
         </div>
