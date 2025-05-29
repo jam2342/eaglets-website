@@ -21,7 +21,6 @@ const alumniData = [
   },
 ];
 
-
 export default function AlumniPage() {
   return (
     <main className="relative w-full min-h-screen bg-gradient-to-br from-[#fff6e8] to-[#ffe5dc] px-4 pt-32 pb-20 flex flex-col items-center overflow-hidden">
@@ -58,7 +57,7 @@ export default function AlumniPage() {
                   <div>
                     <p className="text-lg font-semibold text-gray-800">{alum.name}</p>
                     <p className="text-sm text-gray-600 italic">{alum.role}</p>
-                    <p className="text-sm text-gray-700 mt-2">{alum.bio}</p>
+                    <p className="text-sm text-gray-700 mt-2">{`${alum.bio}`}</p>
                   </div>
                 </div>
               ))}
