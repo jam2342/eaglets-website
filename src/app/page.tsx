@@ -14,26 +14,32 @@ const fadeInUp = {
 export default function Home() {
   return (
     <main className="relative w-full min-h-screen bg-gradient-to-br from-orange-400 to-orange-700 pt-8 overflow-hidden">
-      
       <ParticlesBackground />
 
-      {/* Banner Section */}
+      {/* Fullscreen Banner Section */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="relative w-full max-w-5xl h-[300px] my-12 mx-auto px-4"
+        className="relative w-full h-screen"
       >
-        <Image
-          src="/Banner.jpg"
-          alt="Team Eaglets Banner"
-          width={1200}
-          height={300}
-          className="w-full h-full object-cover rounded-xl shadow-lg"
-          priority
-        />
-        <div className="absolute inset-0 flex items-center justify-center px-6">
-          <div className="backdrop-blur-lg bg-white/30 border border-white/40 rounded-xl px-6 py-4 text-center shadow-md">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/Banner.jpg"
+            alt="Team Eaglets Banner"
+            fill
+            className="object-cover w-full h-full"
+            priority
+          />
+        </div>
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40 z-10" />
+
+        {/* Text Overlay */}
+        <div className="absolute inset-0 z-20 flex items-center justify-center px-6">
+          <div className="backdrop-blur-lg bg-white/30 border border-white/40 rounded-xl px-6 py-8 text-center shadow-md">
             <h1 className="text-4xl sm:text-6xl font-extrabold text-white drop-shadow">
               Eaglets: Robot Kits for Kids
             </h1>
@@ -60,9 +66,7 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
               className="inline-block mt-4 px-8 py-3 text-lg font-bold text-blue-600 border-4 border-blue-500 rounded-full transition hover:bg-blue-100"
             >
-              <a href="/programs">
-              OUR PROGRAMS
-              </a>
+              <a href="/programs">OUR PROGRAMS</a>
             </motion.a>
           </motion.div>
           <div className="w-full h-[2px] bg-blue-200 mt-16 rounded-full" />
@@ -102,8 +106,7 @@ export default function Home() {
           <motion.div {...fadeInUp} className="bg-white/80 backdrop-blur-md rounded-3xl p-10 text-center shadow-xl mx-4">
             <h2 className="text-3xl sm:text-4xl font-bold text-blue-600 mb-6">Get Involved</h2>
             <p className="text-gray-800 text-lg mb-8">
-              Join us in building the future. Whether you're a student, parent, sponsor, or mentor —
-              there's a place for you at Eaglets.
+              {"Join us in building the future. Whether you're a student, parent, sponsor, or mentor — there's a place for you at Eaglets."}
             </p>
             <a
               href="/join"
