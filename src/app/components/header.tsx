@@ -32,7 +32,8 @@ export default function Header() {
             { label: 'RESOURCES', items: [
               { href: '/robotics-at-home', text: 'Robotics at Home' },
               { href: '/gallery', text: 'Gallery' }
-            ]}
+            ]},
+            { label: 'LEGACY', items: [{ href: '/alumni', text: 'Alumni' }] },
           ].map(({ label, items }) => (
             <div key={label} className="relative group">
               <button className="flex items-center gap-1 hover:text-blue-600 transition-colors duration-200">
@@ -124,6 +125,13 @@ export default function Header() {
               links: [
                 { href: '/robotics-at-home', text: 'Robotics at Home' },
                 { href: '/gallery', text: 'Gallery' },
+              ],
+            },
+            {
+              id: 'legacy',
+              label: 'LEGACY',
+              links: [
+                { href: '/alumni', text: 'Alumni' },
               ],
             },
           ].map(({ id, label, links }) => (

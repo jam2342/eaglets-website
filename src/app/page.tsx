@@ -1,5 +1,4 @@
 'use client';
-/* eslint-disable react/no-unescaped-entities */
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
