@@ -23,7 +23,6 @@ export default function Home() {
         transition={{ duration: 1 }}
         className="relative w-full h-screen"
       >
-        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/Banner.jpg"
@@ -34,17 +33,15 @@ export default function Home() {
           />
         </div>
 
-        {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/40 z-10" />
 
-        {/* Text Overlay */}
         <div className="absolute inset-0 z-20 flex items-center justify-center px-6">
           <div className="backdrop-blur-lg bg-white/30 border border-white/40 rounded-xl px-6 py-8 text-center shadow-md">
             <h1 className="text-4xl sm:text-6xl font-extrabold text-white drop-shadow">
               Eaglets: Robot Kits for Kids
             </h1>
             <p className="mt-4 text-lg sm:text-xl text-white/90">
-              Building the future of robotics, one line of code at a time.
+              {"Building the future of robotics, one line of code at a time."}
             </p>
           </div>
         </div>
@@ -58,7 +55,7 @@ export default function Home() {
               STEP INTO THE WORLD OF ENGINEERING AND PROGRAMMING
             </h2>
             <p className="text-lg sm:text-xl text-gray-800 leading-relaxed mb-6">
-              Eaglets: Robot Kits for Kids is a student-run organization that encourages children to explore engineering and technology through robot kits. Our organization was established by students from Allen High School's Eagle Robotics team, who designed 3D-printed robot kits and developed a curriculum aimed at teaching students the fundamentals of building and programming robots. Throughout the year, we host various events in order to provide students from all backgrounds with the opportunity to develop STEM skills.
+              {"Eaglets: Robot Kits for Kids is a student-run organization that encourages children to explore engineering and technology through robot kits. Our organization was established by students from Allen High School's Eagle Robotics team, who designed 3D-printed robot kits and developed a curriculum aimed at teaching students the fundamentals of building and programming robots. Throughout the year, we host various events in order to provide students from all backgrounds with the opportunity to develop STEM skills."}
             </p>
             <motion.a
               href="#programs"
